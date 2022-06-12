@@ -21,27 +21,27 @@ public class Main {
     /*
      * The number of exams given in the course.
      */
-    ???
+    private static final int NUM_EXAMS = 3;
 
     /*
      * The number of homework assignments in the course.
      */
-    ???
+    private static final int NUM_HOMEWORKS = 5;
     
     /**
      * The Roster of students that is read from the input file "gradebook.dat".
      */
-    ???
+    private Roster mRoster;
 
     /**
      * A reference to the View object.
      */
-    ???
+    private View mView;
 
     /**
      * This is where execution starts. Instantiate a Main object and then call run().
      */
-    ???
+    new Main().run();
 
     /**
      * exit() is called when the Exit button in the View is clicked. When we exit we have to write
@@ -51,21 +51,24 @@ public class Main {
      * FileNotFoundException that will be thrown if for some reason, we cannot open "gradebook.dat"
      * for writing.
      *
-     * PSEUDOCODE:
-     * method exit() : void
-     *     try
-     *         instantiate a GradebookWriter object named gbWriter, opening "gradebook.dat" for
-     *         writing
-     *         call writeGradebook(getRoster()) on gbWriter
-     *         call System.exit(0) to terminate the application with an exit code of 0
-     *     catch FileNotFoundException e
-     *         call messageBox() on getView() to display a message box containing the text "Could
-     *         not open gradebook.dat for writing. Exiting without saving."
-     *         call System.exit(-1) to terminate the application with an error code of -1
-     *     end try-catch
-     * end exit
      */
-    ???
+    public void exit() {
+    	/*
+    	 * PSEUDOCODE:
+    	 * method exit() : void
+    	 *     try
+    	 *         instantiate a GradebookWriter object named gbWriter, opening "gradebook.dat" for
+    	 *         writing
+    	 *         call writeGradebook(getRoster()) on gbWriter
+    	 *         call System.exit(0) to terminate the application with an exit code of 0
+    	 *     catch FileNotFoundException e
+    	 *         call messageBox() on getView() to display a message box containing the text "Could
+    	 *         not open gradebook.dat for writing. Exiting without saving."
+    	 *         call System.exit(-1) to terminate the application with an error code of -1
+    	 *     end try-catch
+    	 * end exit
+    	 */
+    }
 
     /**
      * This method returns the number of exams in the class by returning the constant NUM_EXAMS.
@@ -99,7 +102,10 @@ public class Main {
     /**
      * run() is the main routine and is called from main().
      *
-     * PSEUDOCODE:
+     */
+    private void run() {
+    /*
+     * * PSEUDOCODE:
      * method run
      *     call JFrame.setDefaultLookAndFeelDecorated(true or false depending on your preference)
      *     -- Create the View passing 'this' as the argument so the View will be linked to the Main
@@ -121,7 +127,7 @@ public class Main {
      *     end try-catch
      * end run
      */
-    ???
+    }
 
     /**
      * search() is called when the Search button is clicked in the View. The input parameter is
@@ -130,14 +136,17 @@ public class Main {
      * the Student with that last name. If the student is not located, getStudent() returns null.
      *
      * @param pLastName The last name of the student who we will search the Roster for.
-     *
-     * PSEUDOCODE:
-     * method search(pLastName : String) : Student
-     *     call getRoster().getStudent(pLastName) and return what getStudent() returns
-     * end search
      */
-    ???
-
+    public Student search(String pLastName) {
+        /*
+         *
+         * PSEUDOCODE:
+         * method search(pLastName : String) : Student
+         *     call getRoster().getStudent(pLastName) and return what getStudent() returns
+         * end search
+         */
+    }
+    	
     /**
      * Mutator method for mRoster.
      */

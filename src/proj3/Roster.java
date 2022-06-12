@@ -1,7 +1,9 @@
 //**************************************************************************************************
 // CLASS: Roster
 //
-// AUTHOR
+// 
+//
+// TEMPLATE AUTHOR
 // Kevin R. Burger (burgerk@asu.edu)
 // Computer Science & Engineering Program
 // Fulton Schools of Engineering
@@ -21,51 +23,53 @@ public class Roster {
     /**
      * Declare mStudentList as ArrayList<Student>
      */
-    ???
+    private ArrayList<Student> mStudentList;
 
     /**
      * Roster()
-     *
-     * PSEUDOCODE:
-     * method Roster()
-     *     -- Note that mStudentList was already declared so we do not need to declare it here.
-     *     -- What we need to do here is create the ArrayList<Student> object that mStudentList
-     *     -- will refer to.
-     *     create an ArrayList<Student> object and then pass that object as the argument to
-     *     setStudentList() to make mStudentList refer to the ArrayList
-     * end Roster
      */
-    ???
+    public Roster() {
+    	/* todo
+    	 *	PSEUDOCODE:
+    	 * method Roster()
+    	 *     -- Note that mStudentList was already declared so we do not need to declare it here.
+    	 *     -- What we need to do here is create the ArrayList<Student> object that mStudentList
+    	 *     -- will refer to.
+    	 *     create an ArrayList<Student> object and then pass that object as the argument to
+    	 *     setStudentList() to make mStudentList refer to the ArrayList
+    	 * end Roster
+    	 */
+    }
 
     /**
-     * addStudent()
-     *
      * Adds pstudent to the ArrayList
-     *
-     * PSEUDOCODE:
-     * method addStudent(pStudent : Student) : void
-     *     add (will append) pStudent to mStudentList
-     * end method
      */
-    ???
+    public void addStudent() {
+    	/*
+    	 * PSEUDOCODE:
+    	 * method addStudent(pStudent : Student) : void
+    	 *     add (will append) pStudent to mStudentList
+    	 * end method
+    	 */
+    }
 
     /**
-     * getStudent()
-     *
      * Searches mStudentList for a Student with pLastName.
-     *
-     * PSEUDOCODE:
-     * method getStudent(pLastName : String) : Student
-     *     -- Get the index of the student in the student list
-     *     index = call Searcher.search(getStudentList(), pLastName)
-     *     -- If index is -1 then no student with that last name could be found so we return
-     *     -- null. Otherwise, we get the Student from the student list at the index and return
-     *     -- the Student.
-     *     if index == -1 then return null
-     *     else return the Student object in getStudentList() at index 'index'
-     * end getStudent
      */
-    ???
+    public Student getStudent(String pLastName) {
+    	/*
+    	 * PSEUDOCODE:
+    	 * method getStudent(pLastName : String) : Student
+    	 *     -- Get the index of the student in the student list
+    	 *     index = call Searcher.search(getStudentList(), pLastName)
+    	 *     -- If index is -1 then no student with that last name could be found so we return
+    	 *     -- null. Otherwise, we get the Student from the student list at the index and return
+    	 *     -- the Student.
+    	 *     if index == -1 then return null
+    	 *     else return the Student object in getStudentList() at index 'index'
+    	 * end getStudent
+    	 */
+    }
 
     /**
      * getStudentList()
@@ -94,17 +98,18 @@ public class Roster {
     }
 
     /**
-     * sortRoster()
      * Called to sort the roster by last name.
-     *
-     * PSEUDOCODE:
-     * method sortRoster()
-     *     -- Note that all of the methods in Sorter are class methods, so we call the sort()
-     *     -- method on the class Sorter.
-     *     call Sorter.sort() passing the list of students returned from getStudentList()
-     * end sortRoster
      */
-    ???
+    public void sortRoster() {
+    	/*
+    	 * PSEUDOCODE:
+    	 * method sortRoster()
+    	 *     -- Note that all of the methods in Sorter are class methods, so we call the sort()
+    	 *     -- method on the class Sorter.
+    	 *     call Sorter.sort() passing the list of students returned from getStudentList()
+    	 * end sortRoster
+    	 */
+    }
 
     /**
      * Returns a String representation of this Roster. toString() methods are very handy for

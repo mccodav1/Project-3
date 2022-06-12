@@ -26,55 +26,59 @@ public class Student implements Comparable<Student> {
      * mCurrStudent is a reference to the Student object which is currently being displayed and
      * edited in the View. It should only be accessed via accessor/mutator methods.
      */
-    ???
+    private static Student mCurrStudent;
 
     /**
      * mExamList is an ArrayList of Integers storing the student's exam scores.
      */
-    ???
+    private ArrayList<Integer> mExamList;
     
     /**
      * The student's first name.
      */
-    ???
+    private String mFirstName;
 
     /**
      * mHomework List is an ArrayList of Integers storing the student's homework scores.
      */
-    ???
+    private ArrayList<Integer> mHomeworkList;
 
     /**
-     * The student's lst name.
+     * The student's last name.
      */
-    ???
+    private String mLastName;
 
     /**
      * Student()
-     *
-     * PSEUDOCODE:
-     * method Student(pFirstName : String, pLastName : String)
-     *     save parameters pFirstName and pLastName to instance variables by calling mutators
-     *     -- Note that we only create the exam list here, it will be populated later
-     *     create an ArrayList<Integer> and pass it off to setExamList()
-     *     -- Note that we only create the homework list here, it will be populated later
-     *     create an ArrayList<Integer> and pass it off to setHomeworkList()
-     * end Student()
      */
-    ???
+    public Student(String pFirstName, String pLastName) {
+    	/*
+    	 * * PSEUDOCODE:
+    	 * method Student(pFirstName : String, pLastName : String)
+    	 *     save parameters pFirstName and pLastName to instance variables by calling mutators
+    	 *     -- Note that we only create the exam list here, it will be populated later
+    	 *     create an ArrayList<Integer> and pass it off to setExamList()
+    	 *     -- Note that we only create the homework list here, it will be populated later
+    	 *     create an ArrayList<Integer> and pass it off to setHomeworkList()
+    	 * end Student()
+    	 */
+    }
 
     /**
-     * addExam()
-     *
+     * 
      * Adds an exam score pScore to the exam list
      *
      * @param pScore
      *
-     * PSEUDOCODE:
-     * method addExam(pScore : int) : void
-     *     call add(pScore) on getExamList() to add a new exam score to the list of exam scores.
-     * end addExam
      */
-    ???
+    public void addExam(int pScore) {
+    	/*
+    	 * PSEUDOCODE:
+    	 * method addExam(pScore : int) : void
+    	 *     call add(pScore) on getExamList() to add a new exam score to the list of exam scores.
+    	 * end addExam
+    	 */
+    }
 
     /**
      * addHomework()
@@ -83,13 +87,16 @@ public class Student implements Comparable<Student> {
      *
      * @param pScore
      *
-     * PSEUDOCODE:
-     * method addHomework(pScore : int) : void
-     *     call add(pScore) on getHomeworkList() to add a new homework score to the list of
-     *     homework scores
-     * end addHomework
      */
-    ???
+    public void addHomework(int pScore) {
+    	/*
+    	 * * PSEUDOCODE:
+    	 * method addHomework(pScore : int) : void
+    	 *     call add(pScore) on getHomeworkList() to add a new homework score to the list of
+    	 *     homework scores
+    	 * end addHomework
+    	 */
+    }
 
     /**
      * compareTo()
@@ -103,15 +110,20 @@ public class Student implements Comparable<Student> {
      * Provide the annotation that prevents accidental overloading since we are overriding the
      * String.compareTo() method.
      *
-     * PSEUDOCODE:
-     * method compareTo(pStudent : Student) : int
-     *     return: negative int if the last name of this Student is < the last name of pStudent
-     *     return: zero if the last name of this Student is = the last name of pStudent
-     *     return: positive int if the last name of this Student is > the last name of pStudent
-     *     hint: the last names are Strings and String already implements compareTo().
-     * end compareTo
      */
-    ???
+    @Override
+    public int compareTo(Student pStudent) {
+    	/*
+    	 * PSEUDOCODE:
+    	 * method compareTo(pStudent : Student) : int
+    	 *     return: negative int if the last name of this Student is < the last name of pStudent
+    	 *     return: zero if the last name of this Student is = the last name of pStudent
+    	 *     return: positive int if the last name of this Student is > the last name of pStudent
+    	 *     hint: the last names are Strings and String already implements compareTo().
+    	 * end compareTo
+    	 */
+    	return 0;	// remove once implemented and a real value is returned
+    }
     
     /**
      * Accessor method for mCurrStudent.
@@ -129,11 +141,14 @@ public class Student implements Comparable<Student> {
      *
      * @return The exam score.
      *
-     * Hint: Call getExamList() to get the ArrayList<Integer> object storing the exam scores.
-     * Since that object is an ArrayList<Integer>, we next call the get(index) method to retrieve
-     * the correct exam score.
      */
-    ???
+    public int getExam(){
+    	/*
+    	 * Hint: Call getExamList() to get the ArrayList<Integer> object storing the exam scores.
+    	 * Since that object is an ArrayList<Integer>, we next call the get(index) method to retrieve
+    	 * the correct exam score.
+    	 */
+    }
 
     /**
      * getExamList()
@@ -158,7 +173,11 @@ public class Student implements Comparable<Student> {
      *
      * Returns the student's full name in the format: "lastname, firstname".
      */
-    ???
+    public String getFullName() {
+    	/*
+    	 * todo
+    	 */
+    }
     
     /**
      * getHomework()
@@ -169,11 +188,14 @@ public class Student implements Comparable<Student> {
      *
      * @return The homework score.
      *
-     * Hint: Call getHomeworkList() to get the ArrayList<Integer> object storing the hw scores.
-     * Since that object is an ArrayList<Integer>, we next call the get(index) method to retrieve
-     * the correct hw score.
      */
-    ???
+    public int getHomework() {
+    	/*
+    	 * Hint: Call getHomeworkList() to get the ArrayList<Integer> object storing the hw scores.
+    	 * Since that object is an ArrayList<Integer>, we next call the get(index) method to retrieve
+    	 * the correct hw score.
+    	 */
+    }
 
     /**
      * getHomeworkList()
@@ -207,11 +229,15 @@ public class Student implements Comparable<Student> {
      *
      * @pNum is the index into the list of exams, where 0 is the index of the first exam score.
      *
-     * See the hint for getExam(). This method will be similar, but rather than calling get()
-     * on the ArrayList<Integer> object to get a score, we need to call set(index, value) method
-     * to set the value in the ArrayList<Integer> at index 'index' to 'value'.
      */
-    ???
+    public void setExam() {
+    	/*
+    	 * 
+    	 * See the hint for getExam(). This method will be similar, but rather than calling get()
+    	 * on the ArrayList<Integer> object to get a score, we need to call set(index, value) method
+    	 * to set the value in the ArrayList<Integer> at index 'index' to 'value'.
+    	 */
+    }
 
     /**
      * setExamList()
@@ -238,11 +264,14 @@ public class Student implements Comparable<Student> {
      *
      * @pNum is the index into the list of homeworks, where 0 is the index of the first hw score.
      *
-     * See the hint for getHomework(). This method will be similar, but rather than calling get()
-     * on the ArrayList<Integer> object to get a score, we need to call set(index, value) method
-     * to set the value in the ArrayList<Integer> at index 'index' to 'value'.
      */
-    ???
+    public void setHomework() {
+    	/*
+    	 * See the hint for getHomework(). This method will be similar, but rather than calling get()
+    	 * on the ArrayList<Integer> object to get a score, we need to call set(index, value) method
+    	 * to set the value in the ArrayList<Integer> at index 'index' to 'value'.
+    	 */
+    }
 
     /**
      * setHomeworkList()

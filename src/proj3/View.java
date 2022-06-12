@@ -29,12 +29,12 @@ public class View extends JFrame implements ActionListener {
     /**
      * The width of the View frame.
      */
-    ???
+    public static final int FRAME_WIDTH = 525;
 
     /**
      * The height of the View frame.
      */
-    ???
+    public static final int FRAME_HEIGHT = 225;
     
     /**
      * When the View() ctor is called from Main.run() to create the View, run() passes a reference
@@ -44,12 +44,18 @@ public class View extends JFrame implements ActionListener {
      * mMain is made accessible within this class via accessor/mutator methods getMain() and
      * setMain(). It shall not be directly accessed.
      */
-    ???
+    private Main mMain;
 
     /*
      * Declare GUI related instance variables for the buttons and text fields.
      */
-    ???
+    private JButton mClearButton;
+    private JTextField[] mExamText;
+    private JButton mExitButton;
+    private JTextField[] mHomeworkText;
+    private JButton mSaveButton;
+    private JButton mSearchButton;
+    private JTextField mStudentName;
     
     /**
      * View()
@@ -74,7 +80,7 @@ public class View extends JFrame implements ActionListener {
         // Create mSearchButton with the label "Search"
         // Make this View the action listener for the button
         // Add the button to the panel
-        ???
+        //TODO ENTER CODE HERE
 
         // PSEUDOCODE:
         // Create a JPanel named panelHomework which uses the FlowLayout
@@ -85,13 +91,13 @@ public class View extends JFrame implements ActionListener {
         //     Add mHomeworkText[i] to the panel
         // End For
         // Note: DO NOT HARDCODE THE NUMBER OF HOMEWORK ASSIGNMENTS
-        ???
+        //TODO ENTER CODE HERE
 
         // Create the exam panel which contains the "Exam: " label and the two exam text fields.
         // The pseudocode is omitted because this code is very similar to the code that creates the
         // panelHomework panel above.
         // Note: DO NOT HARDCODE THE NUMBER OF EXAMS
-        ???
+        //TODO ENTER CODE HERE
 
         // PSEUDOCODE:
         // Create a JPanel named panelButtons using FlowLayout
@@ -100,7 +106,7 @@ public class View extends JFrame implements ActionListener {
         // Add the  Clear button to the panel
         // Repeat the three above statements for the Save button
         // Repeat the three above statements for the Exit button
-        ???
+        //TODO ENTER CODE HERE
 
         // PSEUDOCODE:
         // Create a JPanel named panelMain using a vertical BoxLayout
@@ -108,7 +114,7 @@ public class View extends JFrame implements ActionListener {
         // Add panelHomework to panelMain
         // Add panelExam to panelMain
         // Add panelButtons to panelMain
-        ???
+        //TODO ENTER CODE HERE
 
         // Set the title of the View to whatever you want by calling setTitle()
         setTitle("Gred :: Gradebook Editor");
@@ -123,7 +129,7 @@ public class View extends JFrame implements ActionListener {
         // button in the title bar of the View so now the only way to exit the program is by click-
         // ing the Exit button. This ensures that Main.exit() will be called so it will write the
         // student records back out to the gradebook database.
-        ???
+        //TODO ENTER CODE HERE
         
         // Add panelMain to the View.
         add(panelMain);
@@ -145,39 +151,43 @@ public class View extends JFrame implements ActionListener {
      * Make sure to write the @Override annotation to prevent accidental overloading because we are
      * overriding JFrame.actionPerformed().
      *
-     * PSEUDOCOODE:
-     * method actionPerformed(pEvent : ActionEvent) : void
-     * If the source of the event was the Search button Then
-     *     Clear the numbers in the homework and exam fields
-     *     lastName = retrieve the text from the mStudentName text field
-     *     If lastName is the empty string Then
-     *         Call messageBox() to display "Please enter the student's last name."
-     *     Else
-     *         -- Main contains a method named search() which given the last name of a student
-     *         -- will search the Roster for the student. search() either returns the Student
-     *         -- object if found, or if there is no student with that last name in the Roster,
-     *         -- then search() returns null.
-     *         Call getMain().search(lastName) and pass the return value to Student.setCurrStudent()
-     *         If the curr student object saved in the Student class is null Then
-     *             Call messageBox() to display "Student not found. Try again."
-     *         Else
-     *             Retrieve the curr student from the Student class and pass it to displayStudent()
-     *         End if
-     *     End If
-     *
-     * Else if the source of the event was the Save button Then
-     *     If Student.getCurrStudent() is not null Then Call saveStudent(Student.getCurrStudent())
-     *
-     * Else if the source of the event was the Clear button Then
-     *     Call clear()
-     *
-     * Else if the source of the event was the Exit button Then
-     *     If Student.getCurrStudent() is not null Then Call saveStudent(Student.getCurrStudent())
-     *     Call getMain().exit() to terminate the application
-     * End If
-     * end actionPerformed
      */
-    ???
+    @Override
+    public void actionPerformed(ActionEvent pEvent) {
+    	/*
+    	 * PSEUDOCOODE:
+    	 * method actionPerformed(pEvent : ActionEvent) : void
+    	 * If the source of the event was the Search button Then
+    	 *     Clear the numbers in the homework and exam fields
+    	 *     lastName = retrieve the text from the mStudentName text field
+    	 *     If lastName is the empty string Then
+    	 *         Call messageBox() to display "Please enter the student's last name."
+	     *     Else
+	     *         -- Main contains a method named search() which given the last name of a student
+	     *         -- will search the Roster for the student. search() either returns the Student
+	     *         -- object if found, or if there is no student with that last name in the Roster,
+	     *         -- then search() returns null.
+	     *         Call getMain().search(lastName) and pass the return value to Student.setCurrStudent()
+	     *         If the curr student object saved in the Student class is null Then
+	     *             Call messageBox() to display "Student not found. Try again."
+	     *         Else
+	     *             Retrieve the curr student from the Student class and pass it to displayStudent()
+	     *         End if
+	     *     End If
+	     *
+	     * Else if the source of the event was the Save button Then
+	     *     If Student.getCurrStudent() is not null Then Call saveStudent(Student.getCurrStudent())
+	     *
+	     * Else if the source of the event was the Clear button Then
+	     *     Call clear()
+	     *
+	     * Else if the source of the event was the Exit button Then
+	     *     If Student.getCurrStudent() is not null Then Call saveStudent(Student.getCurrStudent())
+	     *     Call getMain().exit() to terminate the application
+	     * End If
+	     * end actionPerformed
+    	 */
+    }
 
     /**
      * clear()
@@ -188,24 +198,29 @@ public class View extends JFrame implements ActionListener {
      * After clear() returns, no student information is being edited or displayed and mStudent
      * has been set to null.
      *
-     * PSEUDOCODE:
-     * method clear() : void
-     *     Set the mStudentName text field to ""
-     *     Clear the numbers in the homework and exam fields by calling clearNumbers()
-     *     Set the current Student object in the Student class to null
-     * end clear
      */
-    ???
+    private void clear() {
+    	/*
+    	 *	PSEUDOCODE:
+    	 * method clear() : void
+    	 *     Set the mStudentName text field to ""
+    	 *     Clear the numbers in the homework and exam fields by calling clearNumbers()
+    	 *     Set the current Student object in the Student class to null
+    	 * end clear
+    	 */
+    }
 
     /**
      * clearNumbers()
      *
      * Clears the homework and exam fields.
      *
-     * DO NOT HARCODE THE NUMBER OF HOMEWORKS AND EXAMS. Call the constant accessor methods in
-     * Main.
+     * 
      */
-    ???
+    private void clearNumbers() {
+    	// DO NOT HARCODE THE NUMBER OF HOMEWORKS AND EXAMS. Call the constant accessor methods in Main.
+    	//TODO ENTER CODE HERE
+    }
     
     /**
      * displayStudent()
@@ -215,19 +230,23 @@ public class View extends JFrame implements ActionListener {
      *
      * @param pStudent is the Student who's scores we are going to use to populate the text fields.
      *
-     * PSEUDOCODE:
-     * method displayStudent(pStudent : Student) : void
-     *     For i = 0 to Main.getNumHomeworks - 1 Do
-     *         int hw = pStudent.getHomework(i)
-     *         String hwstr = convert hw to a String (Hint: Integer.toString())
-     *         mHomeworkText[i].setText(hwstr)
-     *     End For
-     *     Write a similar for loop to place the student's exams scores into the text fields
-     * end displayStudent
-     *
-     * DO NOT HARCODE THE NUMBER OF HOMEWORKS AND EXAMS. Call the constant accessor methods in
-     * Main.
-    ???
+     */
+    private void displayStudent(Student pStudent) {
+    	/*
+    	 * PSEUDOCODE:
+    	 * method displayStudent(pStudent : Student) : void
+    	 *     For i = 0 to Main.getNumHomeworks - 1 Do
+    	 *         int hw = pStudent.getHomework(i)
+    	 *         String hwstr = convert hw to a String (Hint: Integer.toString())
+    	 *         mHomeworkText[i].setText(hwstr)
+    	 *     End For
+	     *     Write a similar for loop to place the student's exams scores into the text fields
+	     * end displayStudent
+	     *
+	     * DO NOT HARCODE THE NUMBER OF HOMEWORKS AND EXAMS. Call the constant accessor methods in
+	     * Main.
+    	 */
+    }
 
     /**
      * Accessor method for mMain.
@@ -260,19 +279,22 @@ public class View extends JFrame implements ActionListener {
      * Retrieves the homework and exam scores for pStudent from the text fields and writes the
      * results to the Student record in the Roster.
      *
-     * PSEUDOCODE:
-     * method saveStudent(pStudent : Student) : void
-     *     For i = 0 to Main.getNumHomeworks - 1 Do
-     *         String hwstr = mHomeworkText[i].getText()
-     *         int hw = convert hwstr to an int (Hint: Integer.parseInt())
-     *         Call pStudent.setHomework(i, hw)
-     *     End For
-     *     Write a similar for loop to save the exam scores in pStudent
-     * end method saveStudent
-     *
-     * DO NOT HARDCODE THE NUMBER OF HOMEWORKS AND EXAMS
      */
-    ???
+    private void saveStudent(Student pStudent) {
+    	/*
+    	 * PSEUDOCODE:
+	     * method saveStudent(pStudent : Student) : void
+	     *     For i = 0 to Main.getNumHomeworks - 1 Do
+	     *         String hwstr = mHomeworkText[i].getText()
+	     *         int hw = convert hwstr to an int (Hint: Integer.parseInt())
+	     *         Call pStudent.setHomework(i, hw)
+	     *     End For
+	     *     Write a similar for loop to save the exam scores in pStudent
+	     * end method saveStudent
+	     *
+	     * DO NOT HARDCODE THE NUMBER OF HOMEWORKS AND EXAMS
+    	 */
+    }
     
     /**
      * Mutator method for mMain.
