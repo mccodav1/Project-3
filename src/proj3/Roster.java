@@ -1,15 +1,27 @@
-//**************************************************************************************************
-// CLASS: Roster
-//
-// 
-//
-// TEMPLATE AUTHOR
-// Kevin R. Burger (burgerk@asu.edu)
-// Computer Science & Engineering Program
-// Fulton Schools of Engineering
-// Arizona State University, Tempe, AZ 85287-8809
-// (c) Kevin R. Burger 2014-2019
-//**************************************************************************************************
+/**
+ * CLASS: Roster (Roster.java)
+ *
+ * DESCRIPTION:
+ * TODO INSERT DESCRIPTION HERE
+ * 
+ *
+ * COURSE AND PROJECT INFO
+ * CSE205 Object Oriented Programming and Data Structures, Summer 2022 C-Session
+ * Project Number: p-03
+ *
+ * Group 4
+ * AUTHOR: David McConnell  dmcconn7    dmcconn7@asu.edu
+ * AUTHOR: Lia Moua         amoua       amoua@asu.edu
+ * AUTHOR: Arsal Akhtar     akakhta2    akakhta2@asu.edu
+ * AUTHOR: Kari McBride     kemcbri2    kemcbri2@asu.edu
+ * 
+ * TEMPLATE AUTHOR
+ * Kevin R. Burger (burgerk@asu.edu)
+ * Computer Science & Engineering Program
+ * Fulton Schools of Engineering
+ * Arizona State University, Tempe, AZ 85287-8809
+ * (c) Kevin R. Burger 2014-2019
+ */
 package proj3;
 
 import java.util.ArrayList;
