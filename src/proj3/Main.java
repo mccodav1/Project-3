@@ -67,21 +67,14 @@ public class Main {
      *
      */
     public void exit() {
-    	/*
-    	 * PSEUDOCODE:
-    	 * method exit() : void
-    	 *     try
-    	 *         instantiate a GradebookWriter object named gbWriter, opening "gradebook.dat" for
-    	 *         writing
-    	 *         call writeGradebook(getRoster()) on gbWriter
-    	 *         call System.exit(0) to terminate the application with an exit code of 0
-    	 *     catch FileNotFoundException e
-    	 *         call messageBox() on getView() to display a message box containing the text "Could
-    	 *         not open gradebook.dat for writing. Exiting without saving."
-    	 *         call System.exit(-1) to terminate the application with an error code of -1
-    	 *     end try-catch
-    	 * end exit
-    	 */
+    	try {
+    		GradebookWriter gbWriter = new GradebookWriter("gradebook.dat");
+    		gbWriter.writeGradebook(getRoster());
+    		System.exit(0);
+    	} catch (FileNotFoundException e) {
+    		getView().messageBox("Could not open 'gradebook.dat' for writing. Exiting without saving.");
+    		System.exit(-1);    		
+    	}
     }
 
     /**
@@ -141,6 +134,15 @@ public class Main {
      *     end try-catch
      * end run
      */
+    	JFrame.setDefaultLookAndFeelDecorated(true);
+    	setView(new View(this));
+    	try {
+    		GradebookReader gbReader = new GradebookReader("gradebook.dat");
+    		setRoster(gbReader.readGradebook());
+    	} catch (FileNotFoundException e) {
+    		getView().messageBox("Could not open 'gradebook.dat' for reading. Exiting.");
+    		System.exit(-1);
+    	}
     }
 
     /**
@@ -152,13 +154,7 @@ public class Main {
      * @param pLastName The last name of the student who we will search the Roster for.
      */
     public Student search(String pLastName) {
-        /*
-         *
-         * PSEUDOCODE:
-         * method search(pLastName : String) : Student
-         *     call getRoster().getStudent(pLastName) and return what getStudent() returns
-         * end search
-         */
+    	return getRoster().getStudent(pLastName);
     }
     	
     /**

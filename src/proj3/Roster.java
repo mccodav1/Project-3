@@ -51,19 +51,21 @@ public class Roster {
     	 *     setStudentList() to make mStudentList refer to the ArrayList
     	 * end Roster
     	 */
+    	setStudentList(new ArrayList<Student>);
     }
 
     /**
      * Adds pstudent to the ArrayList
      */
-    public void addStudent() {
+    public void addStudent(Student pStudent) {
     	/*
     	 * PSEUDOCODE:
     	 * method addStudent(pStudent : Student) : void
     	 *     add (will append) pStudent to mStudentList
     	 * end method
     	 */
-    }
+    	mStudentList.add(pStudent);
+    } // end addstudent, implemented
 
     /**
      * Searches mStudentList for a Student with pLastName.
@@ -81,7 +83,12 @@ public class Roster {
     	 *     else return the Student object in getStudentList() at index 'index'
     	 * end getStudent
     	 */
-    }
+    	int index = Searcher.search(getStudentList(), pLastName);
+    	if (index==-1) return null;
+    	else {
+    		return getStudentList().get(index);
+    	}
+    } // end getstudent, implemented
 
     /**
      * getStudentList()
@@ -121,7 +128,8 @@ public class Roster {
     	 *     call Sorter.sort() passing the list of students returned from getStudentList()
     	 * end sortRoster
     	 */
-    }
+    	Sorter.sort(getStudentList());
+    } // end sortroster, implemented
 
     /**
      * Returns a String representation of this Roster. toString() methods are very handy for

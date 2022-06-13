@@ -62,5 +62,9 @@ public class GradebookWriter extends PrintWriter {
     	 *     Call close()
     	 * end writeGradebook
     	 */
-    }
+    	for (Student student: pRoster.getStudentList()) {
+    		println(student);
+    	}
+    	close();
+    } // end writegradebook, implemented
 }

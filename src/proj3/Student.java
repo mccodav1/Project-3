@@ -76,7 +76,11 @@ public class Student implements Comparable<Student> {
     	 *     create an ArrayList<Integer> and pass it off to setHomeworkList()
     	 * end Student()
     	 */
-    }
+    	setFirstName(pFirstName);
+    	setLastName(pLastName);
+    	setExamList(new ArrayList<>());
+    	setHomeworkList(new ArrayList<>());
+    } // end student, implemented
 
     /**
      * 
@@ -92,7 +96,8 @@ public class Student implements Comparable<Student> {
     	 *     call add(pScore) on getExamList() to add a new exam score to the list of exam scores.
     	 * end addExam
     	 */
-    }
+    	getExamList().add(pScore);
+    } // end addexam, implemented
 
     /**
      * addHomework()
@@ -110,7 +115,8 @@ public class Student implements Comparable<Student> {
     	 *     homework scores
     	 * end addHomework
     	 */
-    }
+    	getHomeworkList().add(pScore);
+    } // end addhomework, implemented
 
     /**
      * compareTo()
@@ -136,8 +142,8 @@ public class Student implements Comparable<Student> {
     	 *     hint: the last names are Strings and String already implements compareTo().
     	 * end compareTo
     	 */
-    	return 0;	// remove once implemented and a real value is returned
-    }
+    	return getLastName().compareTo(pStudent.getLastName());
+    } // end compareto, implemented. may need to flip the operator here.
     
     /**
      * Accessor method for mCurrStudent.
@@ -150,19 +156,21 @@ public class Student implements Comparable<Student> {
      * getExam()
      *
      * Accessor method to retrieve an exam score from the list of exams.
+     * @param i 
      *
      * @param pNum The exam number for which we wish to retrieve the score.
      *
      * @return The exam score.
      *
      */
-    public int getExam(){
+    public int getExam(int pNum){
     	/*
     	 * Hint: Call getExamList() to get the ArrayList<Integer> object storing the exam scores.
     	 * Since that object is an ArrayList<Integer>, we next call the get(index) method to retrieve
     	 * the correct exam score.
     	 */
-    }
+    	return getExamList().get(pNum);
+    } // end getexam, implemented
 
     /**
      * getExamList()
@@ -188,9 +196,7 @@ public class Student implements Comparable<Student> {
      * Returns the student's full name in the format: "lastname, firstname".
      */
     public String getFullName() {
-    	/*
-    	 * todo
-    	 */
+    	return mLastName + ", " + mFirstName;
     }
     
     /**
@@ -203,13 +209,14 @@ public class Student implements Comparable<Student> {
      * @return The homework score.
      *
      */
-    public int getHomework() {
+    public int getHomework(int pNum) {
     	/*
     	 * Hint: Call getHomeworkList() to get the ArrayList<Integer> object storing the hw scores.
     	 * Since that object is an ArrayList<Integer>, we next call the get(index) method to retrieve
     	 * the correct hw score.
     	 */
-    }
+    	return getHomeworkList().get(pNum);
+    } // end gethomework, implemented
 
     /**
      * getHomeworkList()
@@ -244,14 +251,15 @@ public class Student implements Comparable<Student> {
      * @pNum is the index into the list of exams, where 0 is the index of the first exam score.
      *
      */
-    public void setExam() {
+    public void setExam(int pNum, int pScore) {
     	/*
     	 * 
     	 * See the hint for getExam(). This method will be similar, but rather than calling get()
     	 * on the ArrayList<Integer> object to get a score, we need to call set(index, value) method
     	 * to set the value in the ArrayList<Integer> at index 'index' to 'value'.
     	 */
-    }
+    	getExamList().set(pNum, pScore);
+    } // end setexam, implemented
 
     /**
      * setExamList()
@@ -279,13 +287,14 @@ public class Student implements Comparable<Student> {
      * @pNum is the index into the list of homeworks, where 0 is the index of the first hw score.
      *
      */
-    public void setHomework() {
+    public void setHomework(int pNum, int pScore) {
     	/*
     	 * See the hint for getHomework(). This method will be similar, but rather than calling get()
     	 * on the ArrayList<Integer> object to get a score, we need to call set(index, value) method
     	 * to set the value in the ArrayList<Integer> at index 'index' to 'value'.
     	 */
-    }
+    	getHomeworkList().set(pNum, pScore);
+    } // end sethomework, implemented
 
     /**
      * setHomeworkList()

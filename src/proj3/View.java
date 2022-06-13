@@ -95,7 +95,15 @@ public class View extends JFrame implements ActionListener {
         // Make this View the action listener for the button
         // Add the button to the panel
         //TODO ENTER CODE HERE
-
+        JPanel panelSearch = new JPanel();
+        JLabel studentName = new JLabel("Student Name: ");
+        panelSearch.add(studentName);
+        mStudentName = new JTextField("25");
+        panelSearch.add(mStudentName);
+        mSearchButton = new JButton("Search");
+        mSearchButton.addActionListener(this);
+        panelSearch.add(mSearchButton);
+        
         // PSEUDOCODE:
         // Create a JPanel named panelHomework which uses the FlowLayout
         // Add a JLabel "Homework: " to the panel
@@ -106,12 +114,30 @@ public class View extends JFrame implements ActionListener {
         // End For
         // Note: DO NOT HARDCODE THE NUMBER OF HOMEWORK ASSIGNMENTS
         //TODO ENTER CODE HERE
-
+        JPanel panelHomework = new JPanel();
+        JLabel homework = new JLabel("Homework: ");
+        panelHomework.add(homework);
+        JTextField[] mHomeworkText = new JTextField[Main.getNumHomeworks()];
+        for (int i=0; i<=getMain().getNumHomeworks(); i++) {
+        	JTextField tf = new JTextField(5);
+        	mHomeworkText[i]=tf;
+        	panelHomework.add(mHomeworkText[i]);
+        }
+        
         // Create the exam panel which contains the "Exam: " label and the two exam text fields.
         // The pseudocode is omitted because this code is very similar to the code that creates the
         // panelHomework panel above.
         // Note: DO NOT HARDCODE THE NUMBER OF EXAMS
         //TODO ENTER CODE HERE
+        JPanel panelExam = new JPanel();
+        JLabel exam = new JLabel("Exam: ");
+        panelExam.add(exam);
+        JTextField[] mExamText = new JTextField[Main.getNumExams()];
+        for (int i=0; i<=getMain().getNumExams(); i++) {
+        	JTextField tf = new JTextField(5);
+        	mExamText[i] = tf;
+        	panelExam.add(mExamText[i]);
+        }
 
         // PSEUDOCODE:
         // Create a JPanel named panelButtons using FlowLayout
@@ -121,6 +147,16 @@ public class View extends JFrame implements ActionListener {
         // Repeat the three above statements for the Save button
         // Repeat the three above statements for the Exit button
         //TODO ENTER CODE HERE
+        JPanel panelButtons = new JPanel();
+        JButton mClearButton = new JButton("Clear");
+        mClearButton.addActionListener(this);
+        panelButtons.add(mClearButton);
+        JButton mSaveButton = new JButton("Save");
+        mSaveButton.addActionListener(this);
+        panelButtons.add(mSaveButton);
+        JButton mExitButton = new JButton("Exit");
+        mExitButton.addActionListener(this);
+        panelButtons.add(mExitButton);
 
         // PSEUDOCODE:
         // Create a JPanel named panelMain using a vertical BoxLayout
@@ -129,6 +165,12 @@ public class View extends JFrame implements ActionListener {
         // Add panelExam to panelMain
         // Add panelButtons to panelMain
         //TODO ENTER CODE HERE
+        JPanel panelMain = new JPanel();
+        panelMain.setLayout(new BoxLayout(panelMain, BoxLayout.Y_AXIS));
+        panelMain.add(panelSearch);
+        panelMain.add(panelHomework);
+        panelMain.add(panelExam);
+        panelMain.add(panelButtons);
 
         // Set the title of the View to whatever you want by calling setTitle()
         setTitle("Gred :: Gradebook Editor");
@@ -144,6 +186,7 @@ public class View extends JFrame implements ActionListener {
         // ing the Exit button. This ensures that Main.exit() will be called so it will write the
         // student records back out to the gradebook database.
         //TODO ENTER CODE HERE
+        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         
         // Add panelMain to the View.
         add(panelMain);
@@ -151,7 +194,7 @@ public class View extends JFrame implements ActionListener {
         // If you are a Mac user, you may need to call the pack() method which is inherited from
         // java.awt.Window() now to pack the View before displaying it. Windows and Linux users do
         // not need to do this, although if you do, it will not cause any problems.
-        // ???
+        pack();
 
         // Now display the View by calling setVisible().
         setVisible(true);
@@ -168,40 +211,66 @@ public class View extends JFrame implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent pEvent) {
-    	/*
-    	 * PSEUDOCOODE:
-    	 * method actionPerformed(pEvent : ActionEvent) : void
-    	 * If the source of the event was the Search button Then
-    	 *     Clear the numbers in the homework and exam fields
-    	 *     lastName = retrieve the text from the mStudentName text field
-    	 *     If lastName is the empty string Then
-    	 *         Call messageBox() to display "Please enter the student's last name."
-	     *     Else
-	     *         -- Main contains a method named search() which given the last name of a student
-	     *         -- will search the Roster for the student. search() either returns the Student
-	     *         -- object if found, or if there is no student with that last name in the Roster,
-	     *         -- then search() returns null.
-	     *         Call getMain().search(lastName) and pass the return value to Student.setCurrStudent()
-	     *         If the curr student object saved in the Student class is null Then
-	     *             Call messageBox() to display "Student not found. Try again."
-	     *         Else
-	     *             Retrieve the curr student from the Student class and pass it to displayStudent()
-	     *         End if
-	     *     End If
-	     *
-	     * Else if the source of the event was the Save button Then
-	     *     If Student.getCurrStudent() is not null Then Call saveStudent(Student.getCurrStudent())
-	     *
-	     * Else if the source of the event was the Clear button Then
-	     *     Call clear()
-	     *
-	     * Else if the source of the event was the Exit button Then
-	     *     If Student.getCurrStudent() is not null Then Call saveStudent(Student.getCurrStudent())
-	     *     Call getMain().exit() to terminate the application
-	     * End If
-	     * end actionPerformed
-    	 */
-    }
+    	if (pEvent.getSource().equals(mSearchButton)){
+    		
+    		/*
+    		 * If the source of the event was the Search button Then
+    		 * Clear the numbers in the homework and exam fields
+	    	 *     lastName = retrieve the text from the mStudentName text field
+	    	 *     If lastName is the empty string Then
+	    	 *         Call messageBox() to display "Please enter the student's last name."
+		     *     Else
+		     *         -- Main contains a method named search() which given the last name of a student
+		     *         -- will search the Roster for the student. search() either returns the Student
+		     *         -- object if found, or if there is no student with that last name in the Roster,
+		     *         -- then search() returns null.
+		     *         Call getMain().search(lastName) and pass the return value to Student.setCurrStudent()
+		     *         If the curr student object saved in the Student class is null Then
+		     *             Call messageBox() to display "Student not found. Try again."
+		     *         Else
+		     *             Retrieve the curr student from the Student class and pass it to displayStudent()
+		     *         End if
+		     *     End If
+    		 */
+    		clearNumbers();
+    		String lastName = mStudentName.getText();
+    		if (lastName=="") {
+    			messageBox("Please enter the student's last name.");
+    		} else {
+    			Student.setCurrStudent(getMain().search(lastName));
+    			if (Student.getCurrStudent()==null) {
+    				messageBox("Student not found. Try again.");
+    			} else {
+    				displayStudent(Student.getCurrStudent());
+    			}
+    		} // end if source is search button, implemented
+    	} else if (pEvent.getSource().equals(mSaveButton)){
+    		/*
+    		 * * Else if the source of the event was the Save button Then
+    		 *     If Student.getCurrStudent() is not null Then Call saveStudent(Student.getCurrStudent())	
+    		 */
+    		if (Student.getCurrStudent()!=null) {
+    			saveStudent(Student.getCurrStudent());
+    		} // end if source is savebutton, implemented
+    	} else if (pEvent.getSource().equals(mClearButton)) {
+    		/*
+    		 * 	* Else if the source of the event was the Clear button Then
+    		 *     Call clear()
+    		 */
+    		clear();
+    		// end if source is clear button, implemented
+    	} else if (pEvent.getSource().equals(mExitButton)) {
+    		/*
+    		 * * Else if the source of the event was the Exit button Then
+    		 *     If Student.getCurrStudent() is not null Then Call saveStudent(Student.getCurrStudent())
+    		 *     Call getMain().exit() to terminate the application
+    		 */
+    		if (Student.getCurrStudent()!=null) {
+    			saveStudent(Student.getCurrStudent());
+    			getMain().exit();
+    		} // end if source is exit button, implemented
+    	} // end if
+    } // end actionperformed, implemented
 
     /**
      * clear()
@@ -222,7 +291,10 @@ public class View extends JFrame implements ActionListener {
     	 *     Set the current Student object in the Student class to null
     	 * end clear
     	 */
-    }
+    	mStudentName.setText("");
+    	clearNumbers();
+    	Student.setCurrStudent(null);
+    } // end clear, implemented
 
     /**
      * clearNumbers()
@@ -234,7 +306,15 @@ public class View extends JFrame implements ActionListener {
     private void clearNumbers() {
     	// DO NOT HARCODE THE NUMBER OF HOMEWORKS AND EXAMS. Call the constant accessor methods in Main.
     	//TODO ENTER CODE HERE
-    }
+    	//private JTextField[] mHomeworkText;
+    	//private JTextField[] mExamText;
+    	for (int i=0; i<=getMain().getNumHomeworks(); i++) {
+    		mHomeworkText[i].setText("");
+    	}
+    	for (int i=0; i<getMain().getNumExams(); i++) {
+    		mExamText[i].setText("");
+    	}
+    } // end clearnumbers, implemented
     
     /**
      * displayStudent()
@@ -260,7 +340,17 @@ public class View extends JFrame implements ActionListener {
 	     * DO NOT HARCODE THE NUMBER OF HOMEWORKS AND EXAMS. Call the constant accessor methods in
 	     * Main.
     	 */
-    }
+    	for (int i=0; i<=getMain().getNumHomeworks()-1; i++) {
+    		int hw = pStudent.getHomework(i);
+    		String hwstr = Integer.toString(hw);
+    		mHomeworkText[i].setText(hwstr);
+    	}
+    	for (int i=0; i<=getMain().getNumExams()-1; i++) {
+    		int exam = pStudent.getExam(i);
+    		String examstr = Integer.toString(exam);
+    		mExamText[i].setText(examstr);
+    	}
+    } // end displaystudent. implemented
 
     /**
      * Accessor method for mMain.
@@ -308,7 +398,17 @@ public class View extends JFrame implements ActionListener {
 	     *
 	     * DO NOT HARDCODE THE NUMBER OF HOMEWORKS AND EXAMS
     	 */
-    }
+    	for (int i=0; i<=getMain().getNumHomeworks()-1; i++) {
+    		String hwstr = mHomeworkText[i].getText();
+    		int hw = Integer.parseInt(hwstr);
+    		pStudent.setHomework(i, hw);
+    	}
+    	for (int i=0; i<=getMain().getNumExams()-1; i++) {
+    		String examstr = mExamText[i].getText();
+    		int exam = Integer.parseInt(examstr);
+    		pStudent.setExam(i, exam);
+    	}
+    } // end savestudent, implemented
     
     /**
      * Mutator method for mMain.
