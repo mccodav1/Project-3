@@ -24,7 +24,18 @@ public class Searcher {
 	// implement binary search algorithm: iterative (loop) or recursive
 	
 	public static int search(ArrayList<Student> pList, String pKey) {
-		//todo
-		return 0; // remove when a return value is implemented
+		return recursiveBinarySearch(pList, pKey, 0, pList.size());
 	}
+	
+	public static int recursiveBinarySearch(ArrayList<Student> pList, String pKey, int pLow, int pHigh) {
+        if (pLow > pHigh) return -1;
+        int middle = (pLow + pHigh) / 2;
+        if (pKey.compareTo(pList.get(middle).getLastName())==0) return middle;
+        //else if (pKey < pList.get(middle)) {
+        else if (pKey.compareTo(pList.get(middle).getLastName())<0){
+            return recursiveBinarySearch(pList, pKey, pLow, middle-1);
+        } else {
+            return recursiveBinarySearch(pList, pKey, middle+1, pHigh);
+        }
+    }
 }

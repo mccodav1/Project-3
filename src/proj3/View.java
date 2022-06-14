@@ -98,7 +98,7 @@ public class View extends JFrame implements ActionListener {
         JPanel panelSearch = new JPanel();
         JLabel studentName = new JLabel("Student Name: ");
         panelSearch.add(studentName);
-        mStudentName = new JTextField("25");
+        mStudentName = new JTextField(25);
         panelSearch.add(mStudentName);
         mSearchButton = new JButton("Search");
         mSearchButton.addActionListener(this);
@@ -117,10 +117,10 @@ public class View extends JFrame implements ActionListener {
         JPanel panelHomework = new JPanel();
         JLabel homework = new JLabel("Homework: ");
         panelHomework.add(homework);
-        JTextField[] mHomeworkText = new JTextField[Main.getNumHomeworks()];
-        for (int i=0; i<=getMain().getNumHomeworks(); i++) {
-        	JTextField tf = new JTextField(5);
-        	mHomeworkText[i]=tf;
+        mHomeworkText = new JTextField[getMain().getNumHomeworks()];
+        for (int i=0; i<getMain().getNumHomeworks(); i++) {
+        	mHomeworkText[i] = new JTextField(5);
+        	System.out.println(mHomeworkText[i].getText());
         	panelHomework.add(mHomeworkText[i]);
         }
         
@@ -132,10 +132,9 @@ public class View extends JFrame implements ActionListener {
         JPanel panelExam = new JPanel();
         JLabel exam = new JLabel("Exam: ");
         panelExam.add(exam);
-        JTextField[] mExamText = new JTextField[Main.getNumExams()];
-        for (int i=0; i<=getMain().getNumExams(); i++) {
-        	JTextField tf = new JTextField(5);
-        	mExamText[i] = tf;
+        mExamText = new JTextField[getMain().getNumExams()];
+        for (int i=0; i<getMain().getNumExams(); i++) {
+        	mExamText[i] = new JTextField(5);
         	panelExam.add(mExamText[i]);
         }
 
@@ -211,8 +210,8 @@ public class View extends JFrame implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent pEvent) {
-    	if (pEvent.getSource().equals(mSearchButton)){
-    		
+    	System.out.println(pEvent.getActionCommand());
+        if (pEvent.getActionCommand().equals("Search")){	
     		/*
     		 * If the source of the event was the Search button Then
     		 * Clear the numbers in the homework and exam fields
@@ -244,7 +243,7 @@ public class View extends JFrame implements ActionListener {
     				displayStudent(Student.getCurrStudent());
     			}
     		} // end if source is search button, implemented
-    	} else if (pEvent.getSource().equals(mSaveButton)){
+    	} else if (pEvent.getActionCommand().equals("Save")){
     		/*
     		 * * Else if the source of the event was the Save button Then
     		 *     If Student.getCurrStudent() is not null Then Call saveStudent(Student.getCurrStudent())	
@@ -252,14 +251,14 @@ public class View extends JFrame implements ActionListener {
     		if (Student.getCurrStudent()!=null) {
     			saveStudent(Student.getCurrStudent());
     		} // end if source is savebutton, implemented
-    	} else if (pEvent.getSource().equals(mClearButton)) {
+    	} else if (pEvent.getActionCommand().equals("Clear")) {
     		/*
     		 * 	* Else if the source of the event was the Clear button Then
     		 *     Call clear()
     		 */
     		clear();
     		// end if source is clear button, implemented
-    	} else if (pEvent.getSource().equals(mExitButton)) {
+    	} else if (pEvent.getActionCommand().equals("Exit")) {
     		/*
     		 * * Else if the source of the event was the Exit button Then
     		 *     If Student.getCurrStudent() is not null Then Call saveStudent(Student.getCurrStudent())
@@ -267,10 +266,10 @@ public class View extends JFrame implements ActionListener {
     		 */
     		if (Student.getCurrStudent()!=null) {
     			saveStudent(Student.getCurrStudent());
-    			getMain().exit();
+    		} // end if
+    		getMain().exit();
     		} // end if source is exit button, implemented
-    	} // end if
-    } // end actionperformed, implemented
+    	} // end actionperformed, implemented
 
     /**
      * clear()
@@ -308,11 +307,11 @@ public class View extends JFrame implements ActionListener {
     	//TODO ENTER CODE HERE
     	//private JTextField[] mHomeworkText;
     	//private JTextField[] mExamText;
-    	for (int i=0; i<=getMain().getNumHomeworks(); i++) {
-    		mHomeworkText[i].setText("");
+    	for (int i=0; i<getMain().getNumHomeworks(); i++) {
+    	    mHomeworkText[i].setText("");
     	}
     	for (int i=0; i<getMain().getNumExams(); i++) {
-    		mExamText[i].setText("");
+    	    mExamText[i].setText("");
     	}
     } // end clearnumbers, implemented
     

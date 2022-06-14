@@ -20,28 +20,45 @@ package proj3;
 
 import java.util.ArrayList;
 
-public class Sorter {
-	/*
-	 *  implement quicksort algorithm
-	 */
+public class Sorter {	
+    
+    public static void sort(ArrayList<Student> pList) {
+        quickSort(pList, 0, pList.size()-1);                
+    }
+    
+    
+    private static int partition(ArrayList<Student> pList, int fromIndex, int toIndex) {
+        int leftIndex = fromIndex -1;
+        int rightIndex = toIndex +1;
+        Student pivot = pList.get(fromIndex);
+        while (leftIndex < rightIndex) {
+            leftIndex++;
+            while (pList.get(leftIndex).compareTo(pivot) < 0) {
+            //while (pList.get(leftIndex) < pivot) {
+                leftIndex++;
+            }
+            rightIndex--;
+            while (pList.get(rightIndex).compareTo(pivot) > 0) {
+                rightIndex--;
+            }
+            if (leftIndex < rightIndex) {
+                swap(pList, leftIndex, rightIndex);
+            }
+            
+        }
+        return rightIndex;        
+    }
 	
-	private static int partition(ArrayList<Student> pList, int pFromIdx, int pToIdx) {
-		//todo
-		return 0;
-	}
+	public static void quickSort(ArrayList<Student> pList, int fromIndex, int toIndex) {
+        if (fromIndex >= toIndex ) return;
+        int partitionIndex = partition(pList, fromIndex, toIndex);
+        quickSort(pList, fromIndex, partitionIndex);
+        quickSort(pList, partitionIndex+1, toIndex);
+    }
 	
-	private static void quickSort(ArrayList<Student> pList, int pFromIdx, int pToIdx) {
-		//todo
-	}
-	
-	public static void sort(ArrayList<Student> pList) {
-		//todo
-	}
-	
-	private void swap(ArrayList<Student> pList, int pIdx1, int pIdx2) {
-		//todo
-	}
-	
-	
-	
+	private static void swap(ArrayList<Student> pList, int leftIndex, int rightIndex) {
+        Student tmp = pList.get(leftIndex);
+        pList.set(leftIndex, pList.get(rightIndex));
+        pList.set(rightIndex, tmp);
+    }
 }
